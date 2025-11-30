@@ -8,6 +8,7 @@ module.exports = {
         }
         webpackConfig.optimization.splitChunks={
           chunks:'all',
+          // 第三方库缓存包
           cacheGroups:{
             antd:{
               name:"antd-chunk",
@@ -19,6 +20,7 @@ module.exports = {
               test:/react-dom/,
               priority:99,
             },
+            // 第三方插件的意思
             vendors:{
               name:'vendors-chunk',
               test:/node_modules/,

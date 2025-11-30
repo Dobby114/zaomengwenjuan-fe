@@ -5,7 +5,18 @@ import { Button } from 'antd';
 import { Typography } from 'antd';
 import styles from './Home.module.scss';
 import { LOGIN_PATHNAME } from '../router';
-import { RightOutlined } from '@ant-design/icons';
+
+type test = {
+    name:string,
+    phone:number,
+    address:string,
+}
+// 1. 限制后续添加的属性只能是该类型中已经有的属性名字
+// type res<T> = Record<keyof test,T>
+// const data:res<number> = {name:'86',phone:432,address:876}
+// 将类型中部分变为可选
+type testPartial = Partial<Pick<test,'phone'>> & Omit<test,'phone'>
+const data:testPartial = {name:'liao',address:'jia'}
 const Home: FC = () => {
   const navigate = useNavigate();
   const { Title, Paragraph } = Typography;
